@@ -1,0 +1,49 @@
+{% extends "../base.html" %}
+{% block title %}Active a User{% endblock title %}
+{% block content %}
+<div class="container my-5 p-5">
+    <h1>User <span>Details</span></h1>
+    <table class="table">
+        <tr>
+            <td><span>Name</span></td>
+            <td>{{accociate.name}}</td>
+        </tr>
+        <tr>
+            <td><span>Phone</span></td>
+            <td>{{accociate.user}}</td>
+        </tr>
+        <tr>
+            <td><span>Email</span></td>
+            <td>{{accociate.email}}</td>
+        </tr>
+        <tr>
+            <td><span>Date of Join</span></td>
+            <td>{{accociate.created_at}}</td>
+        </tr>
+        <tr>
+            <td><span>Active</span></td>
+            <td>{% if accociate.is_active == True %}<i class="ti ti-circle-check-filled text-success"></i>{% else %}<i class="ti ti-alert-circle-filled text-danger"></i> {% endif %}</td>
+        </tr>
+    </table>
+   {% if accociate.is_active == False %} <button class="primary-button my-3"  data-bs-toggle="modal" data-bs-target="#exampleModal">Activate Account</button>{% else %}<p>Account is Active Now.</p>{% endif %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Are You Sure?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            {%csrf_token%}
+            <input type="hidden" value="{{accociate.user}}" name="user">
+            <input type="submit" class="primary-button" value="Activate">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,108 @@
+{% extends "../base.html" %}
+{% block title %}Franchise Panel{% endblock title %}
+{% block css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"
+/>
+{% endblock css %}
+{% load mathfilters %}
+
+{% block content %}
+<section id="profile">
+    <div class="container my-5">
+        <div class="d-flex justify-content-around mb-5">
+            <div>
+                <h1><span>Repurchase</span> Panel.</h1>
+            </div>
+            <div>
+                <button class="primary-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Sell a Product</button>
+            </div>
+        </div>
+        <!-- <div class="row gap-4 justify-content-center">
+            <div class="col-md-3 text-center">
+                <h3><span id="kit">{{kit.available_kits}}</span></h3>
+                <h1>Availble Kit</h1>
+            </div>
+            <div class="col-md-3 text-center">
+                <h3><span id="mrp">500</span></h3>
+                <h1>MRP.</h1>
+            </div>
+            <div class="col-md-3 text-center">
+                <h3><span id="total"></span></h3>
+                <h1>Total</h1>
+            </div>
+        </div> -->
+    </div>
+    <div class="container my-5 p-5">
+      <h1 class="text-center">Availble <span>Products</span></h1>
+      <table id="myTable" class="display">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>DP</th>
+            <th>BV</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in products %}
+             <tr>
+              <td>{{ data.product }}</td>
+              <td>{{ data.quantity}}</td>
+              <td>{{ data.product.DP}}</td>
+              <td>{{ data.product.BV}}</td>
+              <td>{{ data.quantity|mul:data.product.DP}}</td>
+             </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Sell a Kit</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/franchise/repurchase/sell-a-product" method="get">
+            <div class="mb-2">
+                <input type="text" class="form-control border" required name="username" placeholder="Username...">
+            </div>
+            <div class="mb-2">
+                <input type="submit" class="form-control primary-button">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      responsive: true,
+    });
+
+    var Total = 0;
+    var kit = parseInt($(this).find("#kit").text());
+    var mrp = parseInt($(this).find("#mrp").text());
+    var Total = kit * mrp
+
+    $("#total").text(Total)
+  });
+</script>
+{% endblock script %}

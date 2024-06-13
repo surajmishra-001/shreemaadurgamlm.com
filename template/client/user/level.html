@@ -1,0 +1,46 @@
+{% extends "../base.html" %}
+{% block title %}Level Page{% endblock title%} 
+{% block css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"
+/>
+{% endblock css %}
+{% load mathfilters %}
+
+{% block content %}
+<section id="profile">
+    <div class="container my-5">
+      <div class="row gap-5 justify-content-center">
+      {% for i in "x"|ljust:15 %}
+        <div class="col-md-3">
+          <a href="/user/level/{{ forloop.counter }}">
+            <dir>
+              <h1 class="text-center"><span>{{ forloop.counter }}</span></h1>
+              <h1 class="text-center">Level</h1>
+            </dir>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      </div>
+</section>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      responsive: true,
+    });
+  });
+</script>
+{% endblock script %}

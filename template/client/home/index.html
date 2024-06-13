@@ -1,0 +1,317 @@
+{% extends '../base.html' %} {% load static %} 
+{% block title %}Home Page{%endblock title %}
+{% block activeHome %}active{% endblock activeHome %}
+ {% block content %}
+ {% comment %} main  {% endcomment %}
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6 align-self-center">
+      <h1>
+        करें <span>बेहतर भविष्य</span><br />
+        की <span>शुरुआत ...</span>
+      </h1>
+      <p class="p-80">
+        इस भाग-दौड़ भरे जीवन में इंसान तब तक खुश नहीं रह सकता जब तक वह अपने जीवन की नैतिक जिम्मेदारियां नहीं पूरी कर लेता। आईए अपने भविष्य और सपनों के लिए मिल-जुल कर काम करें और जीवन को खुशहाल बनाएं।
+      </p>
+      <li class="bullets">स्वयं का मकान</li>
+      <li class="bullets">अच्छी शिक्षा</li>
+      <li class="bullets">परिवार के लिए समय</li>
+      <li class="bullets">स्वयं की कार</li>
+      <li class="bullets">अच्छा बैंक बैलेंस</li>
+    </div>
+    <div class="col-md-6">
+      <img
+        src="{% static 'client/images/MLM1.png' %}"
+        class="w-100"
+        alt=""
+      />
+    </div>
+  </div>
+</div>
+{% comment %} about  {% endcomment %}
+<div class="container my-5">
+    <h1 class='text-center'>About <span>Us.</span></h1>
+    <p class='text-center'>SMD परिवार श्री मां दुर्गा केमिकल्स द्वारा संचालित की जाती है यह कंपनी 2017 से ट्रेडिशनल <br> मार्केट में कार्य कर रही है, कंपनी का अपना मैन्युफैक्चरिंग यूनिट है, <br> कंपनी समूह के सहभागिता सिद्धांत पर कार्य करने की शुरूआत कर रही है <br> जिसमें समूह को लाभ हो</p>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+        <img src="{% static 'client/images/group.png' %}" class='w-100 rounded shadow-sm' alt="" />
+
+        </div>
+    </div>
+</div>
+{% comment %} Products  {% endcomment %}
+<div class="container my-5">
+    <h1 class="text-center">
+      Our <span>Products.</span>
+    </h1>
+    
+    <div class="row my-5 gap-4 justify-content-center">
+      <div class="card shadow-sm">
+        <img src={% static 'client/images/product-1.png' %} class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Handwash</h5>
+          <p class="card-text">
+            Handwash makes hand washing quicker and more effective than ever before! The special formula is proven to remove 99.9% of germs in just 10 seconds*
+          </p>
+          <a href="#" class=" primary-button">
+            Know More
+          </a>
+        </div>
+      </div>
+      <div class="card shadow-sm">
+        <img src={% static 'client/images/prod2.png' %} class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Phenayl</h5>
+          <p class="card-text">
+            It is used a disifectant in many places like home schools, hotels, stores, hospitals etc. <br> 
+          </p>
+          <a href="#" class=" primary-button">
+            Know More
+          </a>
+        </div>
+      </div>
+      <div class="card shadow-sm">
+        <img src="{% static 'client/images/prod3.png' %}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Toilet Cleaner</h5>
+          <p class="card-text">
+            Toilet cleaner Max clean is a specialized product for all your toilet cleaning <br> needs. 
+          </p>
+          <a href="#" class=" primary-button">
+            Know More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  -->
+<div class="container my-5" id="mm">
+  <h1 class="text-center my-3">
+    आखिर आप <span>अपने व्यवसाय</span> से क्या चाहते है?
+  </h1>
+  <p class="text-center">यही यही न कि...... आप अपने काम के स्वयं मलिक हो
+    पार्ट टाइम और फुल टाइम <br> काम करने का चुनाव आप स्वयं कर सकें और अपने काम करने का  <br>समय आप ही तय कर सकें...... जिसमें</p>
+    <table class="my-3 mx-auto">
+      <tr>
+        <td>निवेश कम से कम हो</td>
+        <td>जोखिम कोई न हो</td>
+      </tr>
+      <tr>
+        <td>लाभ अधिक से अधिक हो</td>
+        <td>और भविष्य में बढ़ोतरी अनगिनत हो</td>
+      </tr>
+    </table>
+    <p class="my-2 text-center">
+      इसके लिए आपको करना क्या है...... केवल
+    </p>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+      <img src="{% static 'client/images/web1.png' %}" class="w-100" alt="">
+
+      </div>
+    </div>
+</div>
+<!--  -->
+
+  {% comment %} Mission  {% endcomment %}
+  <div class="my-5 container">
+    <div class="row py-5">
+      <div class="col-md-6">
+        <img src="{% static 'client/images/mission.jpg' %}" class="w-100 rounded shadow-sm" alt="" />
+      </div>
+      <div class="col-md-6">
+        <h1>
+          Our <span>Misson.</span>
+        </h1>
+        <p>सर्वप्रथम आप सभी को कंपनी की तरफ से हार्दिक बधाई एवं सफल जीवन हेतु शुभकामनाएं। हम आप सभी का SMD परिवार में स्वागत करते हैं, हम इस परिवार में आपके सपनों को साकार करने की आकांक्षा करते हैं। वर्तमान समय में नेटवर्किंग व्यवसाय के माध्यम से आप अपने करियर की समस्त आशाएं पूरी कर सकते हैं। आज विश्व के अनेक क्षेत्रों में बड़ी संख्या में लोग इस व्यवसाय के माध्यम से एक बेहतरीन आमदनी के साथ-साथ जीवन के लिए जरूरी सुख सुख सुविधाओं के साथ आरामदायक जीवन व्यतीत कर रहे हैं। SMD परिवार का मुख्य लक्ष्य हमारे सदस्यों को सुरक्षित व निरंतर लंबे समय तक आमदनी का जरिया प्रदान करना है। हम आपको बड़े सपने नहीं दिखा रहे हैं ना कि बड़े आंकड़ों के जाल में डाल रहे हैं, परंतु हां एक ऐसी आकर्षक आमदनी के बारे में बताने जा रहे हैं, जो कि आपके व कंपनी के प्रयासों से तेज गति से बढ़ती है।</p>
+
+
+        <div class="row py-4">
+          <div class="col-md-6 col-6">
+            <li class="bullets">
+              वित्तीय स्वतंत्रता 
+            </li>
+            <li class="bullets">
+              आत्मनिर्भरता 
+            </li>
+          </div>
+          <div class="col-md-6 col-6">
+            <li class="bullets">
+              पैसिव इनकम 
+            </li>
+            <li class="bullets">
+              समय की आजादी 
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% comment %} faq  {% endcomment %}
+  <div class="container my-5">
+    <div class="row py-5">
+      <div class="col-md-6">
+        <h1>
+          Common <span>Questions.</span>
+        </h1>
+        <div class="accordion accordion-flush my-5" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
+              >
+              क्या 18 वर्ष से कम आयु के लोग इस समूह का हिस्सा बन सकते हैं?
+ 
+              </button>
+            </h2>
+            <div
+              id="flush-collapseOne"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingOne"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                नहीं, समूह का हिस्सा बनने के लिए न्यूनतम आयु 18 वर्ष है।
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo"
+                aria-expanded="false"
+                aria-controls="flush-collapseTwo"
+              >
+              क्या श्री मां दुर्गा MLM एक पंजीकृत संस्था है?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseTwo"
+              class="accordion-collapse collapse show"
+              aria-labelledby="flush-headingTwo"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                जी हां, श्री मां दुर्गा MLM, श्री मां दुर्गा केमिकल्स द्वारा संचालित की जाती है। यह कंपनी 2017 से ट्रेडिशनल मार्केट में कार्य कर रही है, कंपनी का अपना मैन्युफैक्चरिंग यूनिट है और कंपनी समूह के सहभागिता सिद्धांत पर कार्य कर रही है। इसकी पंजीकरण संख्या 09AFIPT3160M12W है ।
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree"
+                aria-expanded="false"
+                aria-controls="flush-collapseThree"
+              >
+              SMD परिवार से जुड़ने की क्या प्रक्रिया है?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingThree"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                समूह से जोड़ने के लिए आप हमारे समूह के सदस्यों द्वारा ऑनलाइन अथवा ऑफलाइन माध्यम से जुड़ सकते हैं।
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFour">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFour"
+                aria-expanded="false"
+                aria-controls="flush-collapseFour"
+              >
+              किसी प्रकार की शिकायत या सुझाव कैसे दें?
+
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFour"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingFour"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                किसी भी प्रकार की शिकायत या सुझाव देने के लिए कृपया हमारी टोल फ्री नंबर 831808217 पर कॉल या info@shreemaadurgamlm.com पर मेल करे।
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img src="{% static 'client/images/faq.jpg' %}" class="w-100 rounded shadow-sm" alt="" />
+      </div>
+    </div>
+  </div>
+  {% comment %} contact  {% endcomment %}
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{% static 'client/images/contact.jpg' %}" class="w-100 rounded shadow-sm" alt="" />
+      </div>
+      <div class="col-md-6">
+        <h1>
+          Contact <span>Us.</span>
+        </h1>
+        <p class="p-80">
+          Reach out to our team for questions, support, or inquiries. We're
+          here to assist you.
+        </p>
+        <form action="" class="my-3">
+          <div class="row">
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Your Name.."
+              />
+            </div>
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Phone.."
+              />
+            </div>
+            <div class="col-md-12 my-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email.."
+              />
+            </div>
+            <div class="col-md-12 my-1">
+              <textarea
+                name=""
+                class="form-control"
+                placeholder="How i can help you?"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+            <div class="col-md-12 my-1">
+              <input type="submit" class="primary-button col-md-12" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends '../base.html' %} {% load static %} 
+{% block title %}About Page{%endblock title %}
+{% block activeAbout %} active {% endblock activeAbout %}
+ {% block content %}
+{% comment %} about  {% endcomment %}
+<div class="container my-5">
+    <h1 class='text-center'>About <span>Us.</span></h1>
+    <p class='text-center'>SMD परिवार श्री मां दुर्गा केमिकल्स द्वारा संचालित की जाती है यह कंपनी 2017 से ट्रेडिशनल <br> मार्केट में कार्य कर रही है, कंपनी का अपना मैन्युफैक्चरिंग यूनिट है, <br> कंपनी समूह के सहभागिता सिद्धांत पर कार्य करने की शुरूआत कर रही है <br> जिसमें समूह को लाभ हो</p>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+        <img src="{% static 'client/images/group.png' %}" class='w-100 rounded shadow-sm' alt="" />
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

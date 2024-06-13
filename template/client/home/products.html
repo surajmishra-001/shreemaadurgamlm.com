@@ -1,0 +1,50 @@
+{% extends '../base.html' %} {% load static %} 
+{% block title %} Products Page{%endblock title %}
+{% block activeProducts %} active {% endblock activeProducts %}
+ {% block content %}
+{% comment %} Products  {% endcomment %}
+<div class="container my-5">
+  <h1 class="text-center">
+    Our <span>Products.</span>
+  </h1>
+  
+  <div class="row my-5 gap-4 justify-content-center">
+    <div class="card shadow-sm">
+      <img src={% static 'client/images/product-1.png' %} class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Handwash</h5>
+        <p class="card-text">
+          Handwash makes hand washing quicker and more effective than ever before! The special formula is proven to remove 99.9% of germs in just 10 seconds*
+        </p>
+        <a href="#" class=" primary-button">
+          Know More
+        </a>
+      </div>
+    </div>
+    <div class="card shadow-sm">
+      <img src={% static 'client/images/prod2.png' %} class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Phenayl</h5>
+        <p class="card-text">
+          It is used a disifectant in many places like home schools, hotels, stores, hospitals etc. <br> 
+        </p>
+        <a href="#" class=" primary-button">
+          Know More
+        </a>
+      </div>
+    </div>
+    <div class="card shadow-sm">
+      <img src="{% static 'client/images/prod3.png' %}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Toilet Cleaner</h5>
+        <p class="card-text">
+          Toilet cleaner Max clean is a specialized product for all your toilet cleaning <br> needs. 
+        </p>
+        <a href="#" class=" primary-button">
+          Know More
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

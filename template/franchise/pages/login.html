@@ -1,0 +1,45 @@
+{% extends "../../client/base.html" %}
+{% block title %}Franchise Login | Shree Maa Duraga Mlm{% endblock title %}
+{% block content %}
+<div class="my-5 container">
+    <div class="row justify-content-center">
+       <div class="col-md-6">
+        <form action="" method="post">
+            <h1 class="pb-3 text-center"><span>Franchise</span> Login</h1>
+            {%csrf_token%}
+            <div class="mb-3">
+                <input type="text" class="form-control p-3" name="username" placeholder="Username..">
+            </div>
+            <div class="mb-3">
+                <input type="password" id="passInput" name="password" class="form-control p-3" placeholder="Password..">
+            </div>
+            <div class="mb-2">
+                <input type="checkbox" name="" id="showPass">
+                <label for="">Show Password</label>
+              </div>
+              <div class="mb-2">
+                <input type="submit" class="form-control p-3 primary-button">
+              </div>
+           </form>
+       </div>
+    </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+  
+    $('#showPass').on('click', function(){
+       var passInput=$("#passInput");
+       if(passInput.attr('type')==='password')
+         {
+           passInput.attr('type','text');
+       }else{
+          passInput.attr('type','password');
+       }
+   })
+  })
+</script>
+{% endblock script %}

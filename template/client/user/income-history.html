@@ -1,0 +1,51 @@
+{% extends '../base.html' %} 
+{% block title %}Income History{% endblock title %} 
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" />
+{% endblock css %}
+<section id="profile">
+  <div class="container p-5 my-5 bg-white rounded-md">
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>#</th> <!-- Add a column for row numbers -->
+                <th>Avtar</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in members %}
+                <tr>
+                    <td>{{ forloop.counter }}</td> <!-- Display the row number -->
+                    <td>{% if profile.profile_picture %}
+                        <img src="/media/{{ profile.profile_picture }}" width="50px" height="50px" class="rounded-circle" style="object-fit: cover;">
+                        {% else %}
+                        <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=2000" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" alt="">
+                        {% endif %}</td>
+                    <td>{{ profile.name }}</td>
+                    <td>{{ profile.phone }}</td>
+                    <td><a href="/user/income-history/{{ profile.user }}" class="primary-button">View</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+  </div>
+</section>
+{% endblock content %}
+{% block script %}
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable( {
+            responsive: true,
+            paging: true,
+        } );
+    } );
+</script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+{% endblock script %}

@@ -1,0 +1,303 @@
+{% extends '../base.html' %} {% block title %}User Profile Page{% endblock title%} {% block content %}
+<section id="profile">
+  <div class="container p-5 my-5 bg-white rounded-md">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1>Welcome, <span>{{profile.name}}</span></h1>
+        <small href="#" class="btn btn-sm primary-button">
+         
+          {{rank}}
+        </small>
+      </div>
+      <div class="col-md-6">
+        {% if profile.is_active == True %}
+        <button class="primary-button mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit
+          Profile</button>
+        <button class="primary-button mx-auto" data-bs-toggle="modal" data-bs-target="#addModal">Add Memeber</button>
+        <button class="primary-button mx-auto" data-bs-toggle="modal" data-bs-target="#changePassword">Change
+          Password</button>
+        {% else %}
+        <button class="primary-button mx-auto" data-bs-toggle="modal" data-bs-target="#errorModal">Edit Profile</button>
+        <button class="primary-button mx-auto" data-bs-toggle="modal" data-bs-target="#errorModal">Add Memeber</button>
+        <button class="primary-button mx-auto" data-bs-toggle="modal" data-bs-target="#errorModal">Change
+          Password</button>
+        {% endif %}
+
+
+
+        <!-- eror Modal -->
+        <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Message</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h1 class="text-center"><i class="ti ti-alert-circle-filled text-danger"></i></h1>
+                <p class="text-center">Your account is not active. Please activate it within 24 hours.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Profile</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="" method="post" class="gap-3 d-flex flex-column" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <label for="name">Name</label>
+                  <input type="text" name="name" id="name" value="{{profile.name}}" class="form-control">
+                  <label for="name">Email</label>
+                  <input type="text" name="email" value="{{profile.email}}" class="form-control">
+                  <label for="name">Phone</label>
+                  <input type="text" name="phone" value="{{profile.phone}}" class="form-control">
+                  <label for="name">DOB</label>
+                  <input type="date" name="dob" value="{{profile.dob}}" class="form-control">
+                  <label for="name">Profile Picture</label>
+                  <input type="file" name="profile_picture" value="{{profile.profile_picture}}" class="form-control">
+                  <label for="name">Adhar Picture</label>
+                  <input type="file" name="adhar_img" value="{{profile.aadhar_img}}" class="form-control"
+                    placeholder="Aadhar Picture">
+                  <label for="name">PAN</label>
+                  <input type="text" name="pan" value="{{profile.pan}}" class="form-control" placeholder="PAN">
+                  <label for="name">Account Number</label>
+                  <input type="text" name="account_number" value="{{profile.account_number}}" class="form-control"
+                    placeholder="Account Number">
+                  <label for="name">Bank Name</label>
+                  <input type="text" name="bank_name" value="{{profile.bank_name}}" class="form-control"
+                    placeholder="Bank Name">
+                  <label for="name">Branch</label>
+                  <input type="text" name="branch_name" value="{{profile.branch_name}}" class="form-control"
+                    placeholder="Branch Name">
+                  <label for="name">IFSC Code</label>
+                  <input type="text" name="ifsc_code" value="{{profile.ifsc_code}}" class="form-control"
+                    placeholder="IFSC Code..">
+                  <input type="submit" class="col-md-12 primary-button">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Password</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="/user/update-password" method="post" class="gap-3 d-flex flex-column"
+                  enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <input type="password" name="password" class="form-control" placeholder="Password..">
+                  <input type="password" name="cpassword" class="form-control" placeholder="Confirm Password..">
+                  <input type="submit" class="col-md-12 primary-button" value="Reset">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Member</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form class="row g-3" action="/user/add-member" enctype="multipart/form-data" , method="post">
+                  {% csrf_token %}
+
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">User Id<sup>*</sup></label>
+                    <input type="text" name="username" required class="form-control" id="inputEmail4">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Password<sup>*</sup></label>
+                    <input type="text" value="smd@12345" readonly name="password" required class="form-control"
+                      id="inputPassword4">
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress" class="form-label">Name<sup>*</sup></label>
+                    <input type="text" name="name" class="form-control" required id="inputAddress"
+                      placeholder="Enter your name.">
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress" class="form-label">Sponsor<sup>*</sup></label>
+                    <input type="text" name="sponsor" onchange="getSponsorName()" class="form-control" required
+                      id="sponsor" placeholder="Sponsor id">
+                    <span class="text-primary fw-bold" id="sponsor_name"></span>
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="inputAddress2" placeholder="Email..">
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">Phone<sup>*</sup></label>
+                    <input type="tel" name="phone" class="form-control" required id="inputAddress2"
+                      placeholder="Phone..">
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">Adhar<sup>*</sup></label>
+                    <input type="text" name="adhar" class="form-control" required id="inputAddress2"
+                      placeholder="Adhar..">
+                  </div>
+
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">PAN</label>
+                    <input type="text" name="pan" class="form-control" required id="inputAddress2" placeholder="PAN..">
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">Parent User ID<sup>*</sup></label>
+                    <input type="text" name="parent" onchange="getParentName()" class="form-control" required
+                      id="parent" placeholder="Parent User ID..">
+                    <span class="text-primary fw-bold" id="parent_name"></span>
+
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">Leg<sup>*</sup></label>
+                    <select name="leg" class="form-select" required id="legSelect">
+                     
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">Account Number<sup>*</sup></label>
+                    <input type="text" name="account_number" class="form-control" id="inputAddress2"
+                      placeholder="Account Number..">
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">Nominee<sup>*</sup></label>
+                    <input type="text" name="nominee" required class="form-control" id="inputAddress2"
+                      placeholder="Nominee..">
+                  </div>
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">DOB<sup>*</sup></label>
+                    <input type="date" name="dob" class="form-control" id="inputAddress2" placeholder="Phone..">
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="primary-button col-md-12">Add</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row gap-4 justify-content-center py-5">
+      <div class="col-md-3 d-flex justify-content-center">
+        {% if profile.profile_picture %}
+        <img src="/media/{{profile.profile_picture}}"
+          style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" alt="">
+        {% else %}
+        <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=2000"
+          style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" alt="">
+        {% endif %}
+      </div>
+      <div class="col-md-3">
+        <span>Phone</span>
+        <h6>{% if profile.phone %}{{profile.phone}}{% else %}Not Found{% endif %}</h6>
+      </div>
+      <div class="col-md-3">
+        <span>Email</span>
+        <h6>{% if profile.email %}{{profile.email}}{% else %}Not Found{% endif %}</h6>
+      </div>
+      <div class="col-md-3">
+        <span>Aadhar</span>
+        <h6>{% if profile.aadhar %}{{profile.aadhar}}{% else %}Not Found{% endif %}</h6>
+      </div>
+      <div class="col-md-3">
+        <span>Pan</span>
+        <h6>{% if profile.pan %}{{profile.pan}}{% else %}Not Found{% endif %}</h6>
+      </div>
+      <div class="col-md-3">
+        <span>DOB</span>
+        <h6>{% if profile.dob %}{{profile.dob}}{% else %}Not Found{% endif %}</h6>
+      </div>
+      <div class="col-md-3">
+        <span>Account Number</span>
+        <h6>{% if profile.account_number %}{{profile.account_number}}{% else %}Not Found{% endif %}</h6>
+      </div>
+      <div class="col-md-3">
+        <span>Sponsor</span>
+        <h6>{% if profile.sponsor %}{{profile.sponsor}}{% else %}Root{% endif %}</h6>
+      </div>
+      <div class="col-md-3">
+        <span>Total Memeber</span>
+        <h6>{{ profile.get_total_downline_count|add:"-1" }}</h6>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+{% block script %}
+<script>
+
+
+  const getSponsorName = () => {
+
+    const sponsorId = $("#sponsor").val();
+    $.ajax({
+      url: '/user/get-sponsor-detail/' + sponsorId, 
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        console.log('AJAX Success:', data);
+
+        $("#sponsor_name").html(data.name);
+      },
+      error: function (error) {
+        $("#sponsor_name").html("Not Found");
+      }
+    });
+
+  }
+  const getParentName = () => {
+
+    const parentId = $("#parent").val();
+    $.ajax({
+      url: '/user/get-parent-detail/' + parentId,  
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        console.log('AJAX Success:', data);
+        // Update the Leg dropdown based on the response
+        $("#parent_name").html(data.name);
+        var legData = data.legs; 
+        var selectElement = $('#legSelect'); 
+        selectElement.empty();
+
+          for (var i = 0; i < legData.length; i++) {
+            var legValue = legData[i];
+            var option = $('<option/>', {
+              value: legValue,
+              text: legValue
+            });
+          }
+
+          selectElement.append(option);
+      },
+      error: function (error) {
+          $("#parent_name").html("Not Found Or Not Active");
+          var selectElement = $('#legSelect'); 
+          selectElement.empty();
+          var optionHtml = '<option>No Legs Availble</option>';
+          selectElement.append(optionHtml);
+         }
+    });
+
+  }
+
+
+
+</script>
+
+{% endblock script %}

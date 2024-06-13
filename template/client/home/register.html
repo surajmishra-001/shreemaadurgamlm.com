@@ -1,0 +1,67 @@
+{% extends '../base.html' %} {% load static %} 
+{% block title %}Register Page{%endblock title %}
+ {% block content %}
+  {% comment %} login  {% endcomment %}
+  <div class="container my-5">
+    <div class="row py-5 justify-content-center">
+      <!-- <div class="col-md-6">
+        <img src="{% static 'client/images/register.png' %}" class="w-100 shadow-sm rounded" alt="" />
+      </div> -->
+      {% comment %} {% for message in message %} {% endcomment %}
+      <p>{{request.user}}</p>
+      {% comment %} {% endfor %} {% endcomment %}
+      <div class="col-md-6 login align-self-center">
+          <h1 class="text-center">Register <span>Now.</span></h1>
+          <form action="" method="post" class="row g-3" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+              <label for="inputEmail4" class="form-label">Name. <sup>*</sup></label>
+              <input type="text" autocomplete="off" name="name" class="form-control" id="inputEmail4" placeholder="John Doe" required>
+            </div>
+            <div class="col-md-12">
+              <label for="inputPassword4" class="form-label">Email <sup>*</sup></label>
+              <input type="email" class="form-control" name="email" id="inputPassword4" placeholder="john@gmail.com" required>
+            </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Phone <sup>*</sup></label>
+              <input type="text" class="form-control" name="phone" id="inputAddress" placeholder="9080706050" required>
+            </div>
+            <div class="col-6">
+              <label for="inputAddress2" class="form-label">Soponser Id <sup>*</sup> </label>
+              <input type="text" class="form-control" name="sponser_id" id="inputAddress2" placeholder="SPONSER3215" required>
+            </div>
+            <div class="col-6">
+              <label for="inputAddress2" class="form-label">DOB <sup>*</sup> </label>
+              <input type="date" class="form-control" name="dob" id="inputAddress2" placeholder="Apartment, studio, or floor" required>
+            </div>
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">Aadhar Card <sup>*</sup></label>
+              <input type="file" class="form-control" name="aadhar_card" id="inputCity" required>
+            </div>
+            <div class="col-md-6">
+              <label for="inputState" class="form-label">Profile Picture </label>
+              <input type="file" class="form-control" name="profile_picture" id="" required>
+            </div>
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">Password <sup>*</sup></label>
+              <input type="password" class="form-control" name="password" id="inputCity" required>
+            </div><div class="col-md-6">
+              <label for="inputCity" class="form-label">Confirm Password <sup>*</sup></label>
+              <input type="password" class="form-control" name="cpassword" id="inputCity" required>
+            </div>
+            <div class="col-12 mb-3">
+              <button type="submit" class="primary-button col-md-12">Register</button>
+            </div>
+          </form>
+          <div class="d-flex justify-content-between">
+            <div>
+              <a href="#" class="blue-text">&nbsp;</a>
+            </div>
+            <div>
+              <p>Have an Account, <a href="/login" class="blue-text">Login</a></p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% for agent_info in tree_data %}
+<li>
+    <a href="network/{{agent_info.agent.user.username}}">{% if agent_info.agent.profile_picture %}
+        <img src="/media/{{ agent_info.agent.profile_picture }}" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" alt="">
+        {% else %}
+        <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=2000" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" alt="">
+        {% endif %}</a><br>
+    <a href="network/{{agent_info.agent.user.username}}">{{agent_info.agent.name}}</a>
+    {% if agent_info.children %}
+    <ul>
+        {% include "agent_tree.html" with tree_data=agent_info.children %}
+    </ul>
+    {% endif %}
+</li>
+{% endfor %}

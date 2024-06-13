@@ -1,0 +1,96 @@
+{% extends "../base.html" %} {% block title %} Welcome to Shree Ma Durga Mlm {% endblock title %} 
+{% block content %}
+{% load static %}
+<section id="user-profile">
+    <div class="container py-5 my-5">
+        <div class="row justify-content-center gap-4">
+            <div class="col-md-3 text-center">
+                <a href="/user/profile">
+                    <div>
+                        <i class="ti ti-user-circle"></i>
+                        <h1>Profile</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/user/network">
+                    <div>
+                        <i class="ti ti-users-group"></i>
+                        <h1>Network</h1>
+                    </div>
+                </a>
+            </div>
+            <!-- <div class="col-md-3 text-center">
+                <a href="/user/leaderboard">
+                    <div>
+                        <i class="ti ti-chart-bar"></i>
+                        <h1>Leaderboard</h1>
+                    </div>
+                </a>
+            </div> -->
+            <div class="col-md-3 text-center">
+                <a href="/user/business-plan">
+                    <div>
+                        <i class="ti ti-report-analytics"></i>
+                        <h1>Business Plan</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/user/support">
+                    <div>
+                        <i class="ti ti-message-chatbot"></i>
+                        <h1>Support</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/user/wallet">
+                    <div>
+                        <i class="ti ti-wallet"></i>
+                        <h1>Wallet</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/user/reward">
+                    <div>
+                        <i class="ti ti-award"></i>
+                        <h1>Reward</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/user/funds">
+                    <div>
+                        <i class="ti ti-receipt-dollar"></i>
+                        <h1>Funds</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/user/repurchase-income">
+                    <div>
+                        <i class="ti ti-refresh"></i>
+                        <h1>Repurchase</h1>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5 py-5">
+        <h1 class="text-center">Scan To <span>Pay</span></h1>
+        <div class="row gap-5 justify-content-center py-5">
+            <div class="col-md-3">
+                <img src="{% static "client/images/qr.png" %}" class="w-100" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="{% static "client/images/qr.png" %}" class="w-100" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="{% static "client/images/qr.png" %}" class="w-100" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

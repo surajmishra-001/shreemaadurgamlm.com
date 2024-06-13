@@ -1,0 +1,78 @@
+{% extends "../base.html" %}
+{% block title %}Repurchase History{% endblock title%} 
+{% block css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"
+/>
+{% endblock css %}
+{% load mathfilters %}
+{% block content %}
+<section id="profile">
+    <div class="container my-5">
+        <div class="d-flex justify-content-between">
+          <div>
+           
+            <h1>Total BV: <span class="totalbv">{{ data_count }}</span></h1>
+           
+          </div>
+          <div>
+           
+            <!-- <h1>Total Income: <span>
+            </span></h1> -->
+         
+          </div>
+        </div>
+        <table id="myTable" class="display">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>BV</th>
+              <th>Date</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for data in history %}
+               <tr>
+                <td>{{ data.product}}</td>
+                <td>{{ data.quantity}}</td>
+                <td><span class="bv">{{ data.product.BV|mul:data.quantity}} </span></td>
+                <td>{{ data.created_at}}</td>
+               </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</section>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      responsive: true,
+    });
+  });
+      // Calculate and display the total income
+      var totalIncome = 0;
+
+    $("table tbody tr").each(function () {
+    var income = parseInt($(this).find(".bv").text());
+    totalIncome += income;
+    });
+
+    $(".totalbv").text(totalIncome);
+
+</script>
+{% endblock script %}
+

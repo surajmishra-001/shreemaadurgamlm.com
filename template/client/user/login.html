@@ -1,0 +1,39 @@
+{% extends '../base.html' %} {% load static %} 
+{% block title %}Login Page{%endblock title %}
+{% extends '../base.html' %} {% load static %} 
+{% block title %}Login Page{%endblock title %}
+ {% block content %}
+  {% comment %} login  {% endcomment %}
+  <div class="container my-5">
+    <div class="row py-5">
+      <div class="col-md-6">
+        <img src="{% static 'client/images/login.png' %}" class="w-100 shadow-sm rounded" alt="" />
+      </div>
+      <div class="col-md-6 login align-self-center">
+          <h1 class="text-center">Login <span>Now.</span></h1>
+          <form action="" method="post" class="my-2">
+            {% csrf_token %}
+              <div class="mb-2">
+                  <input type="text" class="form-control" name="username" required placeholder="Phone.." />
+              </div>
+              <div class="mb-2">
+                  <input type="password" class="form-control" name="password" required placeholder="Password.." />
+              </div>
+              <div class="mb-2">
+                <input type="checkbox" name="" id="">
+                <label for="">Show Password</label>
+              </div>
+              <div class="mb-2">
+                  <input type="submit" class="form-control primary-button" value="Login" />
+              </div>
+          </form>
+          <div class="d-flex justify-content-between">
+            <div>
+              <a href="/forgot-password" class="blue-text"></a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+

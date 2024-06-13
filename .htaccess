@@ -1,0 +1,13 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/o7pjyp3zwjem/shreemaadurgamlm.com"
+PassengerBaseURI "/"
+PassengerPython "/home/o7pjyp3zwjem/virtualenv/shreemaadurgamlm.com/3.7/bin/python"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
+RewriteEngine On
+RewriteCond %{HTTP_HOST} shreemaadurgamlm\.com [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://shreemaadurgamlm.com/$1 [R,L]

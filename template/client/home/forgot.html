@@ -1,0 +1,23 @@
+{% extends '../base.html' %} {% load static %} 
+{% block title %}Register Page{%endblock title %}
+ {% block content %}
+  {% comment %} login  {% endcomment %}
+  <div class="container my-5">
+    <div class="row py-5">
+      <div class="col-md-6">
+        <img src="{% static 'client/images/register.png' %}" class="w-100 shadow-sm rounded" alt="" />
+      </div>
+      <div class="col-md-6 login align-self-center">
+          <h1 class="text-center">Forgot <span>Password.</span></h1>
+          <form action="" class="my-5">
+              <div class="mb-2">
+                  <input type="text" class="form-control" placeholder="Registerd Email.." />
+              </div>
+              <div class="mb-2">
+                  <input type="submit" class="form-control primary-button" value="Send Link" />
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends '../base.html' %} {% block title %}Business Plan Page{% endblock title%} 
+{% block content %}
+{% load static %}
+<section id="profile">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <img src="{% static "client/images/b-1.png" %}" class="w-100">
+            </div>
+            <div class="col-md-6">
+                <img src="{% static "client/images/b-2.png" %}" class="w-100">
+            </div>
+            <div class="col-md-6">
+                <img src="{% static "client/images/b-3.png" %}" class="w-100">
+            </div>
+            <div class="col-md-6">
+                <img src="{% static "client/images/b-4.png" %}" class="w-100">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

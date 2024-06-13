@@ -1,0 +1,73 @@
+{% extends "../base.html" %}
+{% block title %}Purachase History{% endblock title %}{% block css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"
+/>
+{% endblock css %}
+{% block content %}
+<section id="profile">
+    
+    <div class="container my-5 p-5">
+      <h1 class="text-center">Purachase <span>History</span></h1>
+      <table id="myTable" class="display">
+        <thead>
+          <tr>
+            <th>Kit</th>
+            <th>MRP</th>
+            <th>DP</th>
+            <th>BV</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in history %}
+             <tr>
+              <td>{{ data.kit }}</td>
+              <td>{{ data.MRP}}</td>
+              <td>{{ data.DP}}</td>
+              <td>{{ data.BV}}</td>
+             </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Sell a Kit</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/franchise/sell-a-kit" method="get">
+            <div class="mb-2">
+                <input type="text" class="form-control border" required name="username" placeholder="Username...">
+            </div>
+            <div class="mb-2">
+                <input type="submit" class="form-control primary-button">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      responsive: true,
+    });
+  });
+</script>
+{% endblock script %}

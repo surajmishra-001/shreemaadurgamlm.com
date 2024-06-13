@@ -1,0 +1,95 @@
+{% extends "../base.html" %}
+{% block title %}Level Page{% endblock title%} 
+{% block css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"
+/>
+{% endblock css %}
+{% load mathfilters %}
+{% block content %}
+<section id="profile">
+    <div class="container my-5">
+        <div class="d-flex justify-content-between">
+          <div>  {% with data_count=all_level_data|length %}
+            <h1>Total Member: <span>{{ data_count }}</span></h1>
+            {% endwith %}</div>
+          <div>
+            {% with data_count=all_level_data|length %}
+            <h1>Total Income: <span>
+              {% if level == 1 %}
+                  {{ data_count|mul:50 }}
+              {% elif level == 2 %}
+                  {{ data_count|mul:30 }}
+              {% elif level == 3 %}
+                  {{ data_count|mul:15 }}
+              {% elif level == 4 %}
+                  {{ data_count|mul:15 }}
+              {% elif level == 5 %}
+                  {{ data_count|mul:10 }}
+              {% elif level == 6 %}
+                  {{ data_count|mul:8 }}
+              {% elif level == 7 %}
+                  {{ data_count|mul:5 }}
+              {% elif level == 8 %}
+                  {{ data_count|mul:5 }}
+              {% elif level == 9 %}
+                  {{ data_count|mul:5 }}
+              {% elif level == 10 %}
+                  {{ data_count|mul:5 }}
+              {% elif level == 11 %}
+                  {{ data_count|mul:4 }}
+              {% elif level == 12 %}
+                  {{ data_count|mul:4 }}
+              {% elif level == 13 %}
+                  {{ data_count|mul:2 }}
+              {% elif level == 14 %}
+                  {{ data_count|mul:1 }}
+              {% elif level == 15 %}
+                  {{ data_count|mul:1 }}
+              {% endif %}
+            </span></h1>
+            {% endwith %}
+          </div>
+        </div>
+        <table id="myTable" class="display">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Parent</th>
+              <th>Sponsor</th>
+              <th>Leg</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for data in all_level_data %}
+           <tr>
+            <td>{{data.level_data.name}}</td>
+            <td>{{data.parent}}</td>
+            <td>{{data.sponsor}}</td>
+            <td>{{data.leg}}</td>
+           </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</section>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      responsive: true,
+    });
+  });
+</script>
+{% endblock script %}

@@ -1,0 +1,120 @@
+{% extends '../base.html' %} {% block css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"
+/>
+{% endblock css %} {% block title %}Network Page{% endblock title%} 
+{% block content %}
+<section id="profile">
+  <div class="container p-5 my-5 bg-white rounded-md">
+    <h1><span>User Network</span></h1>
+    <table id="myTable" class="display">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Level</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 1</td>
+          <td>{{level_1}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 2</td>
+          <td>{{level_2}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 3</td>
+          <td>{{level_3}}</td>
+
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 4</td>
+          <td>{{level_4}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 5</td>
+          <td>{{level_5}}</td>
+
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 6</td>
+          <td>{{level_6}}</td>
+
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 7</td>
+          <td>{{level_7}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 8</td>
+          <td>{{level_8}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 9</td>
+          <td>{{level_9}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 10</td>
+          <td>{{level_10}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 11</td>
+          <td>{{level_11}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 12</td>
+          <td>{{level_12}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 13</td>
+          <td>{{level_13}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 14</td>
+          <td>{{level_14}}</td>
+        </tr>
+        <tr>
+          <td>{{data.name}}</td>
+          <td>Level 15</td>
+          <td>{{level_15}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock content %} {% block script %}
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      responsive: true,
+    });
+  });
+</script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+{% endblock script %}
+
+
+
+

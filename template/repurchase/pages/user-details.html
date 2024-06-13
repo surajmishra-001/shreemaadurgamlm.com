@@ -1,0 +1,82 @@
+{% extends "../base.html" %}
+{% block title %}Sell a Product{% endblock title %}
+{% block content %}
+<div class="container my-5 p-5">
+   <div class="row">
+    <div class="col-md-6">
+      <h1>User <span>Details</span></h1>
+      <table class="table">
+          <tr>
+              <td><span>Name</span></td>
+              <td>{{ accociate.name }}</td>
+          </tr>
+          <tr>
+              <td><span>Phone</span></td>
+              <td>{{ accociate.user }}</td>
+          </tr>
+          <tr>
+              <td><span>Email</span></td>
+              <td>{{ accociate.email }}</td>
+          </tr>
+          <tr>
+              <td><span>Date of Join</span></td>
+              <td>{{ accociate.created_at }}</td>
+          </tr>
+          <tr>
+              <td><span>Active</span></td>
+              <td>{% if accociate.is_active %}<i class="ti ti-circle-check-filled text-success"></i>{% else %}<i class="ti ti-alert-circle-filled text-danger"></i> {% endif %}</td>
+          </tr>
+      </table>
+     
+    </div>
+    <div class="col-md-6">
+      {% if accociate.is_active == True %}
+      <form action="" method="post">
+        <h1 class="pb-3">Sell <span>Products</span></h1>
+        {% csrf_token %}
+        <input type="hidden" name="user" value="{{ accociate.user }}">
+        <div class="form-set">
+          <div class="mb-2">
+            <select name="product[]" required class="form-control" id="product">
+              <option value="" selected hidden>--Choose Product--</option>
+              {% for product in products %}
+                <option value="{{ product.id }}">{{ product.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-2">
+            <input type="number" required name="quantity[]" class="form-control" placeholder="Quantity..">
+          </div>
+        </div>
+        <div class="mb-2">
+          <input type="submit" id="submit-button" class="primary-button" value="Sell">
+        </div>
+      </form>
+      <button class="btn btn-sm btn-secondary" id="add-form">Add New Row</button>
+      {% else %}
+      <p>Acoount is not active.</p>
+      {% endif %}
+    </div>
+   </div>
+</div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        const addButton = $("#add-form");
+        const submitButton = $("#submit-button");
+
+        addButton.on("click", function() {
+            const formSetClone = $(".form-set").first().clone();
+            // Clear the product and quantity fields in the cloned form
+            formSetClone.find("select[name='product[]']").val("");
+            formSetClone.find("input[name='quantity[]']").val("");
+            formSetClone.insertBefore(submitButton);
+        });
+    });
+</script>
+  
+{% endblock content %}

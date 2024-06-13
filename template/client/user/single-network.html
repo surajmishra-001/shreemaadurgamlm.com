@@ -1,0 +1,78 @@
+{% extends '../base.html' %} {% block css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"
+/>
+{% endblock css %} {% block title %}Network Page{% endblock title%} 
+{% block content %}
+<section id="profile">
+  <div class="container p-5 my-5 bg-white rounded-md">
+    <h1><span>User Network.</span></h1>
+    <table id="myTable" class="display">
+      <thead>
+          <tr>
+              <th>Avatar</th>
+              <th>Name</th>
+              <th>Parent</th>
+              <th>Leg</th>
+              <!-- Add more table headers as needed -->
+          </tr>
+      </thead>
+      <tbody>
+          {% for profile in report %}
+          <tr>
+              <td>
+                  {% if profile.profile_picture %}
+                  <img src="/media/{{ profile.profile_picture }}"
+                      width="50px"
+                      height="50px"
+                      class="rounded-circle"
+                      style="object-fit: cover"
+                      alt="{{ profile.name }} Avatar"
+                  />
+                  {% else %}
+                  <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=2000"
+                      style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"
+                      alt="{{ profile.name }} Avatar"
+                  />
+                  {% endif %}
+              </td>
+              <td>{{ profile.name }}</td>
+              <td>
+                  {% if profile.parent %}
+                  {{ profile.parent.name }}  <!-- Display parent's name if available -->
+                  {% else %}
+                  No Parent  <!-- Display "No Parent" if there is no parent -->
+                  {% endif %}
+              </td>
+              <td>
+                  {% if profile.leg %}
+                  {{ profile.leg }}  <!-- Display leg if available -->
+                  {% else %}
+                  -  <!-- Display a hyphen or any other text if leg is not available -->
+                  {% endif %}
+              </td>
+              <!-- You can add more columns as needed -->
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  
+    </table>
+  </div>
+</section>
+{% endblock content %} {% block script %}
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      responsive: true,
+    });
+  });
+</script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+{% endblock script %}

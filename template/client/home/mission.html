@@ -1,0 +1,40 @@
+{% extends '../base.html' %} {% load static %} 
+{% block title %}Mission Page{%endblock title %}
+{% block activeMission %}active{% endblock activeMission %}
+ {% block content %}
+  {% comment %} Mission  {% endcomment %}
+  <div class="my-5 container">
+    <div class="row py-5">
+      <div class="col-md-6">
+        <img src="{% static 'client/images/mission.jpg' %}" class="w-100 rounded shadow-sm" alt="" />
+      </div>
+      <div class="col-md-6">
+        <h1>
+          Our <span>Misson.</span>
+        </h1>
+        <p>सर्वप्रथम आप सभी को कंपनी की तरफ से हार्दिक बधाई एवं सफल जीवन हेतु शुभकामनाएं। हम आप सभी का SMD परिवार में स्वागत करते हैं, हम इस परिवार में आपके सपनों को साकार करने की आकांक्षा करते हैं। वर्तमान समय में नेटवर्किंग व्यवसाय के माध्यम से आप अपने करियर की समस्त आशाएं पूरी कर सकते हैं। आज विश्व के अनेक क्षेत्रों में बड़ी संख्या में लोग इस व्यवसाय के माध्यम से एक बेहतरीन आमदनी के साथ-साथ जीवन के लिए जरूरी सुख सुख सुविधाओं के साथ आरामदायक जीवन व्यतीत कर रहे हैं। SMD परिवार का मुख्य लक्ष्य हमारे सदस्यों को सुरक्षित व निरंतर लंबे समय तक आमदनी का जरिया प्रदान करना है। हम आपको बड़े सपने नहीं दिखा रहे हैं ना कि बड़े आंकड़ों के जाल में डाल रहे हैं, परंतु हां एक ऐसी आकर्षक आमदनी के बारे में बताने जा रहे हैं, जो कि आपके व कंपनी के प्रयासों से तेज गति से बढ़ती है।</p>
+
+
+        <div class="row py-4">
+          <div class="col-md-6 col-6">
+            <li class="bullets">
+              वित्तीय स्वतंत्रता 
+            </li>
+            <li class="bullets">
+              आत्मनिर्भरता 
+            </li>
+          </div>
+          <div class="col-md-6 col-6">
+            <li class="bullets">
+              पैसिव इनकम 
+            </li>
+            <li class="bullets">
+              समय की आजादी 
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

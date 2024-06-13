@@ -1,0 +1,258 @@
+{% extends '../base.html' %} {% block title %}Income History{% endblock title %}
+{% block content %} {% load mathfilters %} {% block css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"
+/>
+{% endblock css %}
+<section id="profile">
+  <div class="container p-5 my-5 bg-white rounded-md">
+    <div class="d-flex mb-5 justify-content-between">
+      <div class="col-md-3 text-center">
+        <h1>Total Income</h1>
+        <h1>
+            &#8377;
+          <span class="member totalIncome" id="totalIncome">0</span>
+        </h1>
+      </div>
+      <div class="col-md-3 text-center">
+        <h1>Closed Income</h1>
+        <h1>
+            &#8377; <span class="member" id="closedIncome">0</span>
+        </h1>
+      </div>
+      <div class="col-md-3 text-center">
+        <h1>Balance</h1>
+        <h1>
+            &#8377;
+          <span class="newIncome" id="newIncome">0</span>
+          <br>
+        </h1>
+        {% if is_redeem_visible %}
+        <button class="primary-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Redeem</button>
+        {% endif %}
+      </div>
+    </div>
+    <h1 class="text-center">Income <span>History</span></h1>
+    <table id="myTable" class="display">
+      <thead>
+        <tr>
+          <!-- Add a column for row numbers -->
+          <th>Level</th>
+          <th>Accociates</th>
+          <th>Income</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span class="member">{{level_1|length}}</span></td>
+          <td><span class="income">{{level_1|length|mul:50}}</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span class="member">{{level_2|length}}</span></td>
+          <td><span class="income">{{level_2|length|mul:30}}</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="member">{{level_3|length}}</span></td>
+          <td><span class="income">{{level_3|length|mul:15}}</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="member">{{level_4|length}}</span></td>
+          <td><span class="income">{{level_4|length|mul:15}}</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="member">{{level_5|length}}</span></td>
+          <td><span class="income">{{level_5|length|mul:10}}</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="member">{{level_6|length}}</span></td>
+          <td><span class="income">{{level_6|length|mul:8}}</span></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="member">{{level_7|length}}</span></td>
+          <td><span class="income">{{level_7|length|mul:5}}</span></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="member">{{level_8|length}}</span></td>
+          <td><span class="income">{{level_8|length|mul:5}}</span></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><span class="member">{{level_9|length}}</span></td>
+          <td><span class="income">{{level_9|length|mul:5}}</span></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><span class="member">{{level_10|length}}</span></td>
+          <td><span class="income">{{level_10|length|mul:5}}</span></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><span class="member">{{level_11|length}}</span></td>
+          <td><span class="income">{{level_11|length|mul:4}}</span></td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><span class="member">{{level_12|length}}</span></td>
+          <td><span class="income">{{level_12|length|mul:4}}</span></td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><span class="member">{{level_13|length}}</span></td>
+          <td><span class="income">{{level_13|length|mul:2}}</span></td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td><span class="member">{{level_14|length}}</span></td>
+          <td><span class="income">{{level_14|length|mul:1}}</span></td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td><span class="member">{{level_15|length}}</span></td>
+          <td><span class="income">{{level_15|length|mul:1}}</span></td>
+        </tr>
+        <tr>
+          <td class="fw-bold">Total</td>
+          <td><span id="totalMember" class="member fw-bold">0</span></td>
+          <td class="fw-bold">&#8377; <span id="totalIncome" class="totalIncome income fw-bold">0</span> /-</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1 class="text-center">Redeem <span>History</span></h1>
+    <table id="redeemTable" class="display my-5">
+      <thead>
+        <tr>
+          <!-- Add a column for row numbers -->
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for payment in payments %}
+          <tr>
+            <td><span class="amount">{{payment.amount}}</span></td>
+            <td>{{payment.status}}</td>
+            <td>{{payment.created_at}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Redeem Request</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/user/wallet" method="post">
+          {% csrf_token %}
+          <div class="mb-2">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="user" disabled class="form-control" value="{{request.user}}">
+          </div>
+          <div class="mb-2">
+            <label for="amount">Amount</label>
+            <input type="text" placehoder="Min Redeem 300"  name="amount" id="amount" class="form-control">
+          </div>
+          <div class="mb-2">
+            <input type="submit" id="sBtn" class="primary-button col-md-12">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock content %} {% block script %}
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      responsive: true,
+      paging: false,
+      filter: false,
+      sort: false,
+    });
+    $("#redeemTable").DataTable({
+      responsive: true,
+      paging: false,
+      filter: false,
+      sort: false,
+    });
+    
+    var closedIncome = 0;
+
+    $("#redeemTable tbody tr").each(function () {
+    var status = $(this).find("td:eq(1)").text().trim(); // Get the status column text
+    if (status === "Done") {
+      var income = parseInt($(this).find(".amount").text());
+      closedIncome += income;
+    }
+  });
+
+    $("#closedIncome").text(closedIncome);
+    
+    // Calculate and display the total income
+    var totalIncome = 0;
+
+    $("#myTable tbody tr").each(function () {
+      var income = parseInt($(this).find(".income").text());
+      totalIncome += income;
+    });
+
+    // Calculate and display the total income
+    var totalIncome = 0;
+
+    $("#myTable tbody tr").each(function () {
+      var income = parseInt($(this).find(".income").text());
+      totalIncome += income;
+    });
+
+    $(".totalIncome").text(totalIncome);
+
+    // Calculate and display the total member
+    var totalMember = 0;
+
+    $("#myTable tbody tr").each(function () {
+      var member = parseInt($(this).find(".member").text());
+      totalMember += member;
+    });
+
+    $("#totalMember").text(totalMember);
+
+    var newIncome = 0;
+    var totalIncome = parseInt($(this).find("#totalIncome").text());
+    var closedIncome = parseInt($(this).find("#closedIncome").text());
+    var newIncome = totalIncome - closedIncome
+
+    $("#newIncome").text(newIncome)
+    
+     if (newIncome >= 300){
+          $("#amount").val(newIncome)
+        }
+        else{
+            $("#amount").hide()
+            $("#sBtn").hide()
+        }
+  });
+
+</script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+{% endblock script %}
