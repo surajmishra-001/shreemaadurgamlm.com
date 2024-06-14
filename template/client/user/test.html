@@ -45,7 +45,7 @@
                 <td>{{ data.sponsor|default:"N/A" }} <br> {{ data.sponsor.user|default:"N/A" }}
                 </td>
                 <td>{{ data.leg|default:"N/A" }}</td>
-                <td>{% if data.status == True %} <img src="https://shreemaadurgamlm.com/static/admin/img/icon-yes.svg" alt=""> {% else %} <img src="https://shreemaadurgamlm.com/static/admin/img/icon-no.svg" alt="">{% endif %}</td>
+                <td>{% if data.status == True %} <img src="{{request.path}}/static/admin/img/icon-yes.svg" alt=""> {% else %} <img src="https://shreemaadurgamlm.com/static/admin/img/icon-no.svg" alt="">{% endif %}</td>
                </tr>
             {% endfor %}
           </tbody>
